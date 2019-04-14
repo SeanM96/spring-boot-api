@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -30,11 +30,11 @@
     <p>Coursemates was founded on the idea that, regardless of where you are studying, you should be able to share ideas, experiences and knowledge with other students.</p>
     <h2>Learn.</h2>
     <p>Coursemates believes that no matter what your University teaches, you should have access to all knowledge surrounding your subject.</p>  <h1 class="emailInstruction">Be one of the first.</h1>
-    <form class="form" id="myForm" method="POST" action="/sign-up">
-      <input class="email" id="firstName" type="text" name="firstName" placeholder="First Name" required='true'>
-      <input class="email" id="surname" type="text" name="surname" placeholder="Surname">
-      <input class="email" id="email" type="email" name="email" placeholder="Email me when we launch">
-      <input class="email" id="consent" type="checkbox" name="consent" required>
+    <form class="form" id="myForm" action="#" th:action="@{/}" th:object="${person}" method="post">
+      <input class="email" id="firstName" type="text" name="firstName" placeholder="First Name" required='true' th:field="*{firstName}">
+      <input class="email" id="surname" type="text" name="surname" placeholder="Surname" th:field="*{surname}">
+      <input class="email" id="email" type="email" name="email" placeholder="Email me when we launch" th:field="*{email}">
+      <input class="email" id="consent" type="checkbox" name="consent" required th:field="*{consent}">
       <label class="email label-text">I would like to subscribe to updates from Coursemates</label>
       <input class="submitButton" type="submit" value="submit">
     </form>
@@ -46,7 +46,7 @@
     <div class="footer">
       <a href="/">Home</a>
       <a href="privacy">Privacy</a>
-      <p class="copyright">© Sean Martin and Team Netsol</p>
+      <p class="copyright">© Sean Martin</p>
     </div>
   </div>
 </div>

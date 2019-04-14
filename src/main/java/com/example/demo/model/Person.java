@@ -9,12 +9,16 @@ public class Person {
     private final UUID id;
 
     @NotBlank
-    private final String name;
+    private final String firstName;
+    private final String surname;
+    private final String email;
 
     public Person(@JsonProperty("id") UUID id,
-                  @JsonProperty("name") String name) {
+                  @JsonProperty("name") String firstName, String surname, String email) {
         this.id = id;
-        this.name = name;
+        this.firstName = firstName;
+        this.surname = surname;
+        this.email = email;
     }
 
     public UUID getId() {
@@ -22,6 +26,18 @@ public class Person {
     }
 
     public String getName() {
-        return name;
+        return firstName + " " + surname;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public String getSurname() {
+        return surname;
+    }
+
+    public String getEmail() {
+        return email;
     }
 }

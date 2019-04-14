@@ -21,10 +21,10 @@ public class FakePersonDataAccessServiceTest {
     @Test
     public void canPerformCrud() {
         UUID idOne = UUID.randomUUID();
-        Person personOne = new Person(idOne, "Sean Martin");
+        Person personOne = new Person(idOne, "Sean", "Sean", "a@b.com");
 
         UUID idTwo = UUID.randomUUID();
-        Person personTwo = new Person(idTwo, "Amy Bacon");
+        Person personTwo = new Person(idTwo, "Amy", "Bacon", "a@b.com");
 
         underTest.insertPerson(idOne, personOne);
         underTest.insertPerson(idTwo, personTwo);
@@ -44,7 +44,7 @@ public class FakePersonDataAccessServiceTest {
                 .usingFieldByFieldElementComparator()
                 .containsExactlyInAnyOrder(personOne, personTwo);
 
-        Person personUpdate = new Person(idOne, "jake Black");
+        Person personUpdate = new Person(idOne, "jake", "black", "a@b.com");
 
         assertThat(underTest.updatePersonById(idOne, personUpdate)).isEqualTo(1);
 
@@ -74,7 +74,7 @@ public class FakePersonDataAccessServiceTest {
     @Test
     public void willReturn0IfNoPersonFoundToUpdate() {
         UUID id = UUID.randomUUID();
-        Person person = new Person(id, "James Not in db");
+        Person person = new Person(id, "James Not in db", "we", "a@b.com");
 
         int deleteResult = underTest.updatePersonById(id, person);
 
